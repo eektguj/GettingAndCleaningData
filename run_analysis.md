@@ -54,16 +54,29 @@ Convert the column numbers to a vector of variable names matching columns in dt.
     head(dtFeatures)      
 
 Output looks like 
-   featureNum       featureName featureCode
-1:          1 tBodyAcc-mean()-X          V1
-2:          2 tBodyAcc-mean()-Y          V2
-3:          3 tBodyAcc-mean()-Z          V3
-4:          4  tBodyAcc-std()-X          V4
-5:          5  tBodyAcc-std()-Y          V5
-6:          6  tBodyAcc-std()-Z          V6
+
+            featureNum       featureName featureCode
+            1:          1 tBodyAcc-mean()-X          V1
+            2:          2 tBodyAcc-mean()-Y          V2
+            3:          3 tBodyAcc-mean()-Z          V3
+            4:          4  tBodyAcc-std()-X          V4
+            5:          5  tBodyAcc-std()-Y          V5
+            6:          6  tBodyAcc-std()-Z          V6
+
+      dtFeatures$featureCode
+      
+      
+        [1] "V1"   "V2"   "V3"   "V4"   "V5"   "V6"   "V41"  "V42"  "V43"  "V44"  "V45"  "V46"  "V81"  "V82"  "V83"  "V84"  "V85"  "V86" 
+      [19] "V121" "V122" "V123" "V124" "V125" "V126" "V161" "V162" "V163" "V164" "V165" "V166" "V201" "V202" "V214" "V215" "V227" "V228"
+      [37] "V240" "V241" "V253" "V254" "V266" "V267" "V268" "V269" "V270" "V271" "V345" "V346" "V347" "V348" "V349" "V350" "V424" "V425"
+      [55] "V426" "V427" "V428" "V429" "V503" "V504" "V516" "V517" "V529" "V530" "V542" "V543"
 
 
-    
+Subset these variables using variable names.
+
+      select <- c(key(dt), dtFeatures$featureCode)
+      dt <- dt[, select, with = FALSE]
+
 ## Uses descriptive activity names to name the activities in the data set.
 ## Appropriately labels the data set with descriptive activity names.
 ## Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
