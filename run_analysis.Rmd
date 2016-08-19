@@ -1,6 +1,6 @@
 run_analysis
 ============
-Last updated `r as.character(Sys.time())` using `r R.version$version.string`.
+
 
 
 Instructions for project
