@@ -16,6 +16,8 @@ system(cmd)
 pathIn <- file.path(path, "UCI HAR Dataset")
 list.files(pathIn, recursive = TRUE)
 
+###data set and Merge the training and the test sets
+
 
 dtSubjectTrain <- fread(file.path(pathIn, "train", "subject_train.txt"))
 dtSubjectTest <- fread(file.path(pathIn, "test", "subject_test.txt"))
@@ -38,6 +40,8 @@ dt <- rbind(dtTrain, dtTest)
 dtSubject <- cbind(dtSubject, dtActivity)
 dt <- cbind(dtSubject, dt)
 setkey(dt, subject, activityNum)
+
+## mean and SD
 dtFeatures <- fread(file.path(pathIn, "features.txt"))
 setnames(dtFeatures, names(dtFeatures), c("featureNum", "featureName"))
 
